@@ -1,0 +1,16 @@
+<%= form_for @owner, html: {class: "form-signin"} do |f| %>
+
+<h2 class="form-signin-heading">Owner registration</h2>
+
+<%= f.label :owner, class: "sr-only" %>
+<%= f.text_field :owner, class: "form-control", placeholder: "Name" %>
+
+<%= f.label :name, class: "sr-only" %>
+<%= f.text_field :name, class: "form-control", placeholder: "Your dog's name" %>
+
+<%= f.label :location, class: "sr-only" %>
+<%= f.text_field :location, class: "form-control", placeholder: "Address" %>
+<br>
+<%= f.submit "Register", class: "btn btn-lg btn-primary btn-block" %>
+
+<% end %>
