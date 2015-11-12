@@ -1,6 +1,6 @@
-class CreateWalkers < ActiveRecord::Migration
+class CreateSitters < ActiveRecord::Migration
   def change
-    create_table :walkers do |t|
+    create_table :sitters do |t|
       t.string :name
 
       t.timestamps null: false

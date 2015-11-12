@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112100359) do
+ActiveRecord::Schema.define(version: 20151112142024) do
 
   create_table "appointments", force: :cascade do |t|
-    t.integer  "walker_id"
+    t.integer  "sitter_id"
     t.integer  "dog_id"
     t.date     "date"
     t.datetime "created_at", null: false
@@ -22,12 +22,18 @@ ActiveRecord::Schema.define(version: 20151112100359) do
   end
 
   add_index "appointments", ["dog_id"], name: "index_appointments_on_dog_id"
-  add_index "appointments", ["walker_id", "dog_id"], name: "index_appointments_on_walker_id_and_dog_id"
-  add_index "appointments", ["walker_id"], name: "index_appointments_on_walker_id"
+  add_index "appointments", ["sitter_id", "dog_id"], name: "index_appointments_on_sitter_id_and_dog_id"
+  add_index "appointments", ["sitter_id"], name: "index_appointments_on_sitter_id"
 
   create_table "dogs", force: :cascade do |t|
     t.string   "name"
     t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sitters", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WalkerTest < ActiveSupport::TestCase
+class SitterTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

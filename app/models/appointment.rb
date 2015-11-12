@@ -1,4 +1,4 @@
-class Appointment < ActiveRecord::
-  belongs_to :walker
+class Appointment < ActiveRecord::Base
+  belongs_to :sitter
   belongs_to :dog
 end
