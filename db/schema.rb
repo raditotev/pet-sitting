@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116123753) do
+ActiveRecord::Schema.define(version: 20151116125924) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "sitter_id"
-    t.integer  "dog_id"
+    t.integer  "owner_id"
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "appointments", ["dog_id"], name: "index_appointments_on_dog_id"
-  add_index "appointments", ["sitter_id", "dog_id"], name: "index_appointments_on_sitter_id_and_dog_id"
+  add_index "appointments", ["owner_id"], name: "index_appointments_on_owner_id"
+  add_index "appointments", ["sitter_id", "owner_id"], name: "index_appointments_on_sitter_id_and_owner_id"
   add_index "appointments", ["sitter_id"], name: "index_appointments_on_sitter_id"
 
   create_table "owners", force: :cascade do |t|
