@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112152136) do
+ActiveRecord::Schema.define(version: 20151116123753) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "sitter_id"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 20151112152136) do
   add_index "appointments", ["sitter_id", "dog_id"], name: "index_appointments_on_sitter_id_and_dog_id"
   add_index "appointments", ["sitter_id"], name: "index_appointments_on_sitter_id"
 
-  create_table "dogs", force: :cascade do |t|
+  create_table "owners", force: :cascade do |t|
     t.string   "name"
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "owner"
+    t.string   "dog"
   end
 
   create_table "sitters", force: :cascade do |t|

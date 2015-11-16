@@ -1,4 +1,4 @@
-class DogsController < ApplicationController
+class OwnersController < ApplicationController
   def new
     @owner = Dog.new
   end
