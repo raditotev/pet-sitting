@@ -15,7 +15,8 @@ class PagesController < ApplicationController
   end
 
   def board
-
+    @appointment = Appointment.new
+    @appointments = Appointment.all.where(sitter_id: nil)
   end
 
   def appointments

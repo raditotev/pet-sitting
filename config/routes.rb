@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get 'profile'            => 'pages#profile'
   get 'board'             => 'pages#board'
   get 'appointments' => 'pages#appointments'
+  post 'appointments' => 'appointments#create'
 
-  resources :sitters, only: [:create, :show]
-  resources :owners, only: [:create, :show]
+  resources :sitters, only: [:create]
+  resources :owners, only: [:create]
 
 end

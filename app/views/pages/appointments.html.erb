@@ -1,1 +1,13 @@
-<h1>Appointments</h1>
+<h1 class="center">Your Appointments</h1>
+<% current_user.appointments.each do |appointment| %>
+
+<p>
+  <%= appointment.date %>
+  <%= appointment.owner.location %>
+  <% if sitter? %>
+  <%= appointment.owner.dog %>
+  <% end %>
+</p>
+
+
+<% end %>

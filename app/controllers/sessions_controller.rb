@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         @user = owner
       end
     login(@user)
-    redirect_to @user
+    redirect_to profile_path
     else
       # Add error message
       redirect_to login_path
