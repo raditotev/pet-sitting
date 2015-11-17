@@ -3,6 +3,9 @@
     <ul class="nav nav-pills pull-right">
       <li role="presentation"><%= link_to 'Home', root_url %></li>
       <% if logged_in? %>
+      <li role="presentation"><%= link_to 'Profile', profile_path %></li>
+      <li role="presentation"><%= link_to 'Board', board_path %></li>
+      <li role="presentation"><%= link_to 'Appointments', appointments_path %></li>
       <li role="presentation"><%= link_to 'Log out', logout_path, method: 'delete' %></li>
       <% else %>
       <li role="presentation"><%= link_to 'Login', login_path %></li>

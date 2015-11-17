@@ -10,4 +10,16 @@ class PagesController < ApplicationController
   def login
   end
 
+  def profile
+
+  end
+
+  def board
+
+  end
+
+  def appointments
+
+  end
+
 end
