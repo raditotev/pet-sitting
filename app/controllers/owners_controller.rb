@@ -5,6 +5,7 @@ class OwnersController < ApplicationController
   def create
     @owner = Owner.new(owner_params)
     if @owner.save
+      login(@owner)
       redirect_to @owner
     else
       render :new

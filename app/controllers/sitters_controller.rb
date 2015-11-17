@@ -7,6 +7,7 @@ class SittersController < ApplicationController
 def create
   @sitter = Sitter.new(sitter_params)
   if @sitter.save
+    login(@sitter)
     redirect_to @sitter
   else
     render :new
