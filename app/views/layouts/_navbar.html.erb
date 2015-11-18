@@ -7,6 +7,7 @@
       <li role="presentation"><%= link_to 'Board', board_path %></li>
       <li role="presentation"><%= link_to 'Appointments', appointments_path %></li>
       <li role="presentation"><%= link_to 'Log out', logout_path, method: 'delete' %></li>
+      <li role="presentation"><%= link_to "Hi, #{@current_user.name}" %></li>
       <% else %>
       <li role="presentation"><%= link_to 'Login', login_path %></li>
       <% end %>

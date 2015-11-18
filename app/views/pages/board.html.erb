@@ -4,22 +4,34 @@
 
 <%= form_for @appointment, html: {class: "form-signin"} do |f| %>
 
-    <%= f.hidden_field :owner_id, value: @current_user.id %>
+<%= f.hidden_field :owner_id, value: @current_user.id %>
 
-    <%= f.label :date, class: "sr-only" %>
-    <%= f.date_field :date, class: "form-control" %>
+<%= f.label :date, class: "sr-only" %>
+<%= f.date_field :date, class: "form-control" %>
 
-    <br>
-    <%= f.submit "Find Sitter", class: "btn btn-lg btn-primary btn-block" %>
-    <% end %>
+<br>
+<%= f.submit "Find Sitter", class: "btn btn-primary" %>
+<% end %>
 <% end %>
 
 <% @appointments.each do |appointment| %>
 
-<div>
-  <h3><%= appointment.owner.name %></h3>
-  <p><%= appointment.date %></p>
-  <p><%= appointment.owner.location %></p>
+<div class="row">
+  <div class="col-md-4">
+    <h3><%= appointment.owner.name %></h3>
+    <p><%= appointment.date %></p>
+    <p><%= appointment.owner.location %></p>
+  </div>
+  <div class="col-md-2">
+    <% if sitter? %>
+      <%= form_for(:appointment, url: appointments_path, method: 'patch', html: {class: "form-signin"}) do |f| %>
+      <%= hidden_field_tag :id, appointment.id %>
+      <%= f.hidden_field :sitter_id, value: @current_user.id %>
+      <p><%= f.submit "Take Job", class: "btn btn-primary" %></p>
+
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 
