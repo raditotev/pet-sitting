@@ -1,0 +1,46 @@
+<% @appointments.each do |appointment| %>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+    <% if sitter? %>
+    Owner: <%= appointment.owner.name %>
+    <% else %>
+    Sitter: <%= appointment.sitter.name %>
+    <% end %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 " align="center"> <img alt="Appointment Pic" src="http://onestopgrowth.com/wp-content/uploads/2013/12/Quality-Appointment-Setting.png" class="img-circle img-responsive"> </div>
+
+      <div class=" col-md-9 col-lg-9 ">
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+              <td>Date:</td>
+              <td><%= appointment.date.strftime("%d/%m/%Y") %></td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><%= appointment.owner.location %></td>
+            </tr>
+            <% if sitter? %>
+            <tr>
+              <td>Dog's name</td>
+              <td><%= appointment.owner.dog %></td>
+            </tr>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+      <%= form_for(:appointment, url: appointments_path, method: 'delete', html: {class: "form-signin"}) do |f| %>
+        <%= hidden_field_tag :id, appointment.id %>
+        <%= f.submit "Cancel Job", class: "btn btn-primary" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

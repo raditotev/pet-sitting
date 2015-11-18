@@ -1,0 +1,43 @@
+<% @appointments.each do |appointment| %>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Owner: <%= appointment.owner.name %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://cliparts101.com/files/673/B8B506A1277A08C68274AA908B3027DE/AvatarChien01.png" class="img-circle img-responsive"> </div>
+
+      <div class=" col-md-9 col-lg-9 ">
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+              <td>Date:</td>
+              <td><%= appointment.date.strftime("%d/%m/%Y") %></td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><%= appointment.owner.location %></td>
+            </tr>
+            <tr>
+              <td>Dog's name</td>
+              <td><%= appointment.owner.dog %></td>
+            </tr>
+          </tr>
+        </tbody>
+      </table>
+
+      <% if sitter? %>
+
+      <%= form_for(:appointment, url: appointments_path, method: 'patch', html: {class: "form-signin"}) do |f| %>
+      <%= hidden_field_tag :id, appointment.id %>
+      <%= f.hidden_field :sitter_id, value: current_user.id %>
+      <%= f.submit "Take Job", class: "btn btn-primary" %>
+      <% end %>
+
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

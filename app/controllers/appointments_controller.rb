@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  before_action :author?, only: [:destroy]
 
   def create
     appointment = Appointment.new(appointment_params)
@@ -30,6 +31,16 @@ class AppointmentsController < ApplicationController
   end
 
   private
+
+def author?
+  appointment = Appointment.find(params[:id])
+  owner = appointment.owner
+  sitter = appointment.sitter
+  unless owner == current_user or sitter == current_user
+    #error message
+    redirect_to login_path
+  end
+end
 
   def appointment_params
     params.require(:appointment).permit(:owner_id, :sitter_id, :date)
