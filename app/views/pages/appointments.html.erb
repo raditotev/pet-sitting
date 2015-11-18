@@ -7,6 +7,10 @@
   <% if sitter? %>
   <%= appointment.owner.dog %>
   <% end %>
+  <%= form_for(:appointment, url: appointments_path, method: 'delete', html: {class: "form-signin"}) do |f| %>
+      <%= hidden_field_tag :id, appointment.id %>
+      <%= f.submit "Cancel Job", class: "btn btn-primary" %>
+      <% end %>
 </p>
 
 

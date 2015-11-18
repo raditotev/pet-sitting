@@ -18,6 +18,17 @@ class AppointmentsController < ApplicationController
     redirect_to appointments_path
   end
 
+  def destroy
+    appointment = Appointment.find(params[:id])
+    if sitter?
+      appointment.update_attribute(:sitter_id, nil)
+    else
+      appointment.destroy
+    end
+    #add message
+    redirect_to appointments_path
+  end
+
   private
 
   def appointment_params

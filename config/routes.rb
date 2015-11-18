@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'board'                  => 'pages#board'
   get 'appointments'      => 'pages#appointments'
   post 'appointments'     => 'appointments#create'
-  patch 'appointments' => 'appointments#update'
+  patch  'appointments'  => 'appointments#update'
+  delete 'appointments'  => 'appointments#destroy'
 
   resources :sitters, only: [:create]
   resources :owners, only: [:create]

@@ -4,7 +4,7 @@
 
 <%= form_for @appointment, html: {class: "form-signin"} do |f| %>
 
-<%= f.hidden_field :owner_id, value: @current_user.id %>
+<%= f.hidden_field :owner_id, value: current_user.id %>
 
 <%= f.label :date, class: "sr-only" %>
 <%= f.date_field :date, class: "form-control" %>
@@ -26,9 +26,8 @@
     <% if sitter? %>
       <%= form_for(:appointment, url: appointments_path, method: 'patch', html: {class: "form-signin"}) do |f| %>
       <%= hidden_field_tag :id, appointment.id %>
-      <%= f.hidden_field :sitter_id, value: @current_user.id %>
-      <p><%= f.submit "Take Job", class: "btn btn-primary" %></p>
-
+      <%= f.hidden_field :sitter_id, value: current_user.id %>
+      <%= f.submit "Take Job", class: "btn btn-primary" %>
       <% end %>
     <% end %>
   </div>
