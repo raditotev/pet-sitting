@@ -11,7 +11,11 @@ class PagesController < ApplicationController
   end
 
   def profile
-
+    if sitter?
+      @sitter = Sitter.find(current_user.id)
+    else
+      @owner = Owner.find(current_user.id)
+    end
   end
 
   def board
@@ -20,7 +24,8 @@ class PagesController < ApplicationController
   end
 
   def appointments
-
+    @appointments = current_user.appointments.where("appointments.sitter_id IS NOT NULL")
+    @unassigned = current_user.appointments.where("appointments.sitter_id IS NULL")
   end
 
 end

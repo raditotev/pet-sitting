@@ -1,4 +1,4 @@
-<h1>Board</h1>
+<h1 class="center">Board</h1>
 
 <% if !sitter? %>
 
@@ -10,29 +10,52 @@
 <%= f.date_field :date, class: "form-control" %>
 
 <br>
-<%= f.submit "Find Sitter", class: "btn btn-primary" %>
+<div class="center">
+  <%= f.submit "Find Sitter", class: "btn btn-primary" %>
+</div>
+
 <% end %>
 <% end %>
 
 <% @appointments.each do |appointment| %>
 
-<div class="row">
-  <div class="col-md-4">
-    <h3><%= appointment.owner.name %></h3>
-    <p><%= appointment.date %></p>
-    <p><%= appointment.owner.location %></p>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Owner: <%= appointment.owner.name %></h3>
   </div>
-  <div class="col-md-2">
-    <% if sitter? %>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://cliparts101.com/files/673/B8B506A1277A08C68274AA908B3027DE/AvatarChien01.png" class="img-circle img-responsive"> </div>
+
+      <div class=" col-md-9 col-lg-9 ">
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+              <td>Date:</td>
+              <td><%= appointment.date.strftime("%d/%m/%Y") %></td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td><%= appointment.owner.location %></td>
+            </tr>
+            <tr>
+              <td>Dog's name</td>
+              <td><%= appointment.owner.dog %></td>
+            </tr>
+          </tr>
+        </tbody>
+      </table>
+
+      <% if sitter? %>
       <%= form_for(:appointment, url: appointments_path, method: 'patch', html: {class: "form-signin"}) do |f| %>
       <%= hidden_field_tag :id, appointment.id %>
       <%= f.hidden_field :sitter_id, value: current_user.id %>
       <%= f.submit "Take Job", class: "btn btn-primary" %>
       <% end %>
-    <% end %>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>
-
-
 <% end %>
 

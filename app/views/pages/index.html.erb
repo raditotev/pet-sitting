@@ -1,10 +1,29 @@
 <div class="jumbotron">
+<% if logged_in? %>
+<h1>Welcome</h1>
+  <p class="lead">
+  <strong>Pet-sitters</strong> head straight ot our board to find owners looking for sitters for their pets or go to Appointments to see and manage your jobs.
+  <p><%= link_to "Board", board_path, class: "btn btn-lg btn-success" %></p>
+  </p>
+  <p class="lead">
+  <strong>Pet owners</strong> click on the Appointments button below in order to find a sitter for your pet or to view or edit your upcoming appointments.
+  </p>
+  <p><%= link_to "Appointments", appointments_path, class: "btn btn-lg btn-success" %></p>
+
+<% else %>
+
 <h1>Welcome</h1>
   <p class="lead">
   <strong>Pet-sitters</strong> this is the place where you can find dogs to sit. Visit our board and find location suitable for you and take the job.
   </p>
   <p class="lead">
-  <strong>Pet owners</strong> create an appointment and find sitter for your favourite pet, hassle free, using our services
+  <strong>Pet owners</strong> create an appointment and find sitter for your favourite pet, hassle free, using our services.
   </p>
   <p><%= link_to "Register", register_path, class: "btn btn-lg btn-success" %></p>
+
+<% end %>
 </div>
+
+
+
+

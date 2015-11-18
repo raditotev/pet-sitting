@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   patch  'appointments'  => 'appointments#update'
   delete 'appointments'  => 'appointments#destroy'
 
-  resources :sitters, only: [:create]
-  resources :owners, only: [:create]
+  resources :sitters, only: [:create, :update]
+  resources :owners, only: [:create, :update]
 
 end
